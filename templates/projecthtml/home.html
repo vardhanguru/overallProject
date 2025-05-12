@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href = "{% static 'first.css' %}">
+    <title>{% block title %} Base page {% endblock %}</title>
+    <style>
+        /* Reset */
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+    
+        body {
+          font-family: Arial, sans-serif;
+        }
+    
+        /* Navbar Container */
+        .navbar {
+          background-color: #333;
+          color: #fff;
+          padding: 0.5rem 1rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-wrap: wrap;
+        }
+    
+        .navbar .logo {
+          font-size: 1.5rem;
+          font-weight: bold;
+        }
+    
+        /* Menu Links */
+        .navbar ul {
+          list-style: none;
+          display: flex;
+          gap: 1rem;
+        }
+    
+        .navbar ul li a {
+          color: white;
+          text-decoration: none;
+          padding: 0.5rem;
+          transition: background 0.3s;
+        }
+    
+        .navbar ul li a:hover {
+          background-color: #555;
+          border-radius: 5px;
+        }
+    
+        /* Hamburger (Mobile) */
+        .menu-toggle {
+          display: none;
+          flex-direction: column;
+          cursor: pointer;
+        }
+    
+        .menu-toggle div {
+          width: 25px;
+          height: 3px;
+          background-color: white;
+          margin: 4px 0;
+        }
+    
+        /* Responsive */
+        @media (max-width: 768px) {
+          .navbar ul {
+            display: none;
+            flex-direction: column;
+            width: 100%;
+          }
+    
+          .navbar ul.show {
+            display: flex;
+          }
+    
+          .menu-toggle {
+            display: flex;
+          }
+        }
+      </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">MySite</div>
+        <div class="menu-toggle" onclick="toggleMenu()">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <ul id="nav-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    
+      
+    
+    {% block bodymiddle %}
+    <a href="{% url 'second' %}">second</a>
+
+    <h1>This is base page</h1>
+
+    {% endblock %}
+    <h2>This is footer code</h2>
+    <script>
+        function toggleMenu() {
+          const navLinks = document.getElementById('nav-links');
+          navLinks.classList.toggle('show');
+        }
+      </script>
+</body>
+</html>

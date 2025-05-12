@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block title %}Second page {% endblock %}
+
+
+{% block bodymiddle %}
+<a href="{% url 'first' %}">first</a>
+<h1>This is second page</h1>
+
+{% endblock %}

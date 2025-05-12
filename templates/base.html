@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href = "{% static 'first.css' %}">
+    <title>{% block title %} Base page {% endblock %}</title>
+    <style>
+        /* Reset */
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+    
+        body {
+          font-family: Arial, sans-serif;
+        }
+    
+        /* Navbar Container */
+        .navbar {
+          background-color: #333;
+          color: #fff;
+          padding: 0.5rem 1rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-wrap: wrap;
+        }
+    
+        .navbar .logo {
+          font-size: 1.5rem;
+          font-weight: bold;
+        }
+    
+        /* Menu Links */
+        .navbar ul {
+          list-style: none;
+          display: flex;
+          gap: 1rem;
+        }
+    
+        .navbar ul li a {
+          color: white;
+          text-decoration: none;
+          padding: 0.5rem;
+          transition: background 0.3s;
+        }
+    
+        .navbar ul li a:hover {
+          background-color: #555;
+          border-radius: 5px;
+        }
+    
+        /* Hamburger (Mobile) */
+        .menu-toggle {
+          display: none;
+          flex-direction: column;
+          cursor: pointer;
+        }
+    
+        .menu-toggle div {
+          width: 25px;
+          height: 3px;
+          background-color: white;
+          margin: 4px 0;
+        }
+    
+        /* Responsive */
+        @media (max-width: 768px) {
+          .navbar ul {
+            display: none;
+            flex-direction: column;
+            width: 100%;
+          }
+    
+          .navbar ul.show {
+            display: flex;
+          }
+    
+          .menu-toggle {
+            display: flex;
+          }
+        }
+        .footer {
+  background-color: #222;
+  color: #ccc;
+  padding: 2rem 1rem 1rem;
+  margin-top: 2rem;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-section {
+  flex: 1 1 200px;
+}
+
+.footer-section h3 {
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li a {
+  color: #ccc;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s;
+}
+
+.footer-section ul li a:hover,
+.footer-section .socials a:hover {
+  color: #fff;
+}
+
+.footer-section .socials a {
+  text-decoration: none;
+  color: #ccc;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  border-top: 1px solid #444;
+  padding-top: 1rem;
+}
+
+      </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">MySite</div>
+        <div class="menu-toggle" onclick="toggleMenu()">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <ul id="nav-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+      <h1>Added h1 tag</h1>
+
+    
+      <p>
+        In today's rapidly evolving digital landscape, having a strong online presence is essential for individuals and businesses alike. Whether you're launching a personal blog, promoting a startup, or managing a large corporation, a well-designed website can make a significant difference in reaching your audience effectively. A good website is more than just 
+        <br>aesthetically pleasing—it must also be functional, accessible, and responsive across all devices. User experience plays a vital role in how visitors interact with your content, and optimizing navigation, loading speed, and mobile usability are key components to success. Furthermore, integrating features like contact forms, social media links, and regular updates through 
+        <br>blog posts or newsletters can help keep your audience engaged. As the internet becomes increasingly saturated, standing out requires not only high-quality content but also effective search engine optimization (SEO) strategies. Utilizing the latest technologies and maintaining consistent branding helps reinforce credibility and trust.
+        <br> In addition, considering accessibility standards ensures your site is usable by everyone, including those with disabilities. Overall, investing time in planning, designing, 
+        <br>and maintaining your website is a crucial step toward achieving your digital goals. Remember, your website is often the first impression—make it count with clarity, creativity, and user-centered design.
+      </p>
+      <br>
+      <br>
+      <br>
+      <br>
+    
+    {% block bodymiddle %}
+    <a href="{% url 'second' %}">second</a>
+    
+      
+
+    <h1>This is base page</h1>
+
+    {% endblock %}
+    <h2>This is footer code</h2>
+    <!-- Footer -->
+<footer class="footer">
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>About Us</h3>
+        <p>We are a team of passionate developers building modern web solutions.</p>
+      </div>
+  
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+  
+      <div class="footer-section">
+        <h3>Follow Us</h3>
+        <div class="socials">
+          <a href="#">🐦 Twitter</a><br>
+          <a href="#">📘 Facebook</a><br>
+          <a href="#">📸 Instagram</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 MySite. All rights reserved.
+    </div>
+  </footer>
+  
+
+
+    <script>
+        function toggleMenu() {
+          const navLinks = document.getElementById('nav-links');
+          navLinks.classList.toggle('show');
+        }
+      </script>
+</body>
+</html>
