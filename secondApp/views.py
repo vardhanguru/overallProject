@@ -4,3 +4,6 @@ from django.http import HttpResponse
 
 def second_view(request):
     return render(request, 'second.html')
+
+def third_view(request):
+    return render(request, 'second.html')
